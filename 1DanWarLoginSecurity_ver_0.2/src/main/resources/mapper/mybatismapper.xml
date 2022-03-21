@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boot.cart.dao.StoreDAO">
+
+<!-- BURGERKING -->
+<select id="burgerkingAllMenu" resultType="com.boot.cart.vo.StoreVO">
+	SELECT * FROM burgerking_info order by food
+</select>
+
+<select id="burgerkingMenu" resultType="com.boot.cart.vo.StoreVO">
+	SELECT * FROM burgerking_info where food = #{food}
+</select>
+
+<update id="burgerkingUpdateMenu">
+	UPDATE burgerking_info SET price = #{price} WHERE food = #{food}
+</update>
+
+<insert id="burgerkingInsertMenu">
+	INSERT INTO burgerking_info VALUES (#{food} , #{price})
+</insert>
+
+<delete id="burgerkingDeleteMenu">
+	DELETE FROM burgerking_info WHERE food = #{food}
+</delete>
+
+<!-- MCDONALD -->
+
+<select id="mcdonaldAllMenu" resultType="com.boot.cart.vo.StoreVO">
+	SELECT * FROM mcdonald_info order by food
+</select>
+
+<select id="mcdonaldMenu" resultType="com.boot.cart.vo.StoreVO">
+	SELECT * FROM mcdonald_info where food = #{food}
+</select>
+
+<update id="mcdonaldUpdateMenu">
+	UPDATE mcdonald_info SET price = #{price} WHERE food = #{food}
+</update>
+
+<insert id="mcdonaldInsertMenu">
+	INSERT INTO mcdonald_info VALUES (#{food} , #{price})
+</insert>
+
+<delete id="mcdonaldDeleteMenu">
+	DELETE FROM mcdonald_info WHERE food = #{food}
+</delete>
+
+
+<!-- CART -->
+<select id="cartAllMenu" resultType="com.boot.cart.vo.StoreVO">
+	SELECT * FROM cart_info order by food
+</select>
+
+<select id="cartMenu" resultType="com.boot.cart.vo.StoreVO">
+	SELECT * FROM cart_info where food = #{food}
+</select>
+
+<insert id="cartInsertMenu">
+	INSERT INTO cart_info(food,price) VALUES (#{food} , #{price})
+</insert>
+
+<delete id="cartDeleteMenu">
+	DELETE FROM cart_info WHERE food = #{food}
+</delete>
+
+
+</mapper>

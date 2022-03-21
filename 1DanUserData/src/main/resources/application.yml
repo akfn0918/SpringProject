@@ -1,0 +1,25 @@
+server:
+  port: 60002
+  
+spring:
+  application:
+    name: member-db
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: hr
+    password: hr
+  jpa :            
+    hibernate :
+      ddl-auto : update
+    
+eureka:
+  instance:
+    instance-id: member-db
+#대쉬보드에서 식별할 용도
+  client:
+    register-with-eureka: true 
+    fetch-registry: true     
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+

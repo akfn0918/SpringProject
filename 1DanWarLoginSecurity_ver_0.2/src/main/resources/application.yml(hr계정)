@@ -1,0 +1,41 @@
+server:
+  port: 60600
+  
+spring:
+  application:
+    name: war Login
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: hr
+    password: hr
+  jpa :            
+    hibernate :
+      ddl-auto : create
+    show-sql: true
+    database: oracle
+       
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+    static-path-pattern: /**
+
+mybatis:
+  mapper-locations:
+  - classpath:mapper/**/**.xml
+   
+    
+eureka:
+  instance:
+    instance-id: login-instance
+#대쉬보드에서 식별할 용도
+  client:
+    register-with-eureka: true 
+    fetch-registry: true     
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+
+

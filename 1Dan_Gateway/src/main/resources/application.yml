@@ -1,0 +1,40 @@
+server:
+  port: 8080
+      
+eureka:
+  instance:
+    instance-id: gateway
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone : http://localhost:8761/eureka/  
+
+spring:
+  application:
+    name: gateway-service
+    # 우리는 다양한 마이크로서비스들을 Gateway에 연결시켜 모든 서비스들의 진입점으로 만들 수 있고 
+    # Gateway 내에서 HTTP 요청에 대한 다양한 조작을 할 수 있다.
+  cloud:
+    gateway:
+      routes:
+          #API
+        - id: store-db
+          uri: lb://STORE-DB
+          predicates:
+            - Path=/api/store/** ,/api/menu/**
+
+            # 해당 gateway 서버의 /order/**로 들어오는 요청은 order-service로 인식하겠다는 조건      
+        - id: member-db
+          uri: lb://MEMBER-DB
+          predicates:
+            - Path=/api/mem/**
+            
+
+            
+                
+                       
+            
+                  
+    
+            
